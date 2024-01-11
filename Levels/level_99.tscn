@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg3oksymwqbaw"]
+
+[ext_resource type="Script" path="res://Levels/level_99.gd" id="1_76kt4"]
+[ext_resource type="PackedScene" uid="uid://dxt0xrd8i7ht8" path="res://Player/PlayerChar.tscn" id="1_s6amp"]
+[ext_resource type="PackedScene" uid="uid://cjx5hdgsbw1ly" path="res://UI/player_status_ui.tscn" id="3_ym7d1"]
+
+[sub_resource type="Curve2D" id="Curve2D_mo132"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200, 200, 0, 0, 0, 0, 400, 100)
+}
+point_count = 3
+
+[node name="level_99" type="Node2D"]
+script = ExtResource("1_76kt4")
+
+[node name="Player" parent="." instance=ExtResource("1_s6amp")]
+
+[node name="UI" parent="." instance=ExtResource("3_ym7d1")]
+
+[node name="Path2D" type="Path2D" parent="."]
+scale = Vector2(1, -1)
+curve = SubResource("Curve2D_mo132")

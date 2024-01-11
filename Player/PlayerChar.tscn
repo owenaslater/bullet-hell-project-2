@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxt0xrd8i7ht8"]
+
+[ext_resource type="Script" path="res://Player/PlayerChar.gd" id="1_xjouf"]
+[ext_resource type="Texture2D" uid="uid://c047wkchd8mq0" path="res://icon.svg" id="2_74a3n"]
+[ext_resource type="PackedScene" uid="uid://b87mypnaytny7" path="res://Projectiles/bullet.tscn" id="2_xx44e"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6shc2"]
+width = 20
+height = 20
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cgyox"]
+radius = 10.0499
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_xjouf")
+Bullet = ExtResource("2_xx44e")
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5708
+scale = Vector2(0.7, 1)
+texture = ExtResource("2_74a3n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -1)
+texture = SubResource("NoiseTexture2D_6shc2")
+
+[node name="Shootpos" type="Node2D" parent="."]
+position = Vector2(60, 0)
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BombTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="HurtboxCol" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_cgyox")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

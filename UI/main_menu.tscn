@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4tngvdr04id"]
+
+[ext_resource type="Script" path="res://Main Menu.gd" id="1_brcaq"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_brcaq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 100.0
+offset_bottom = 236.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+
+[node name="New Game" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="Level Select" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level Select"
+
+[node name="Leaderboard" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Leaderboard
+"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Level Select" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="VBoxContainer/Leaderboard" to="." method="_on_leaderboard_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
